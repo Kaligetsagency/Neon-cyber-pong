@@ -19,15 +19,16 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100dvh; /* Adapts to mobile browser address bars */
     width: 100vw;
-    overflow: hidden;
+    overflow-y: auto; /* Allows scrolling if on a very small screen */
+    overflow-x: hidden;
 }
 
 #app {
     width: 100%;
     max-width: 800px;
-    height: 100%;
+    min-height: 100dvh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -39,7 +40,7 @@ body {
     flex-direction: column;
     width: 100%;
     height: 100%;
-    padding: 20px;
+    padding: 5vw; /* Adaptive padding based on screen width */
     text-align: center;
     justify-content: center;
     align-items: center;
@@ -51,7 +52,7 @@ body {
 
 /* Typography & Neon Effects */
 .neon-text {
-    font-size: 3rem;
+    font-size: clamp(2rem, 10vw, 3rem); /* Scales down automatically on phones */
     font-weight: bold;
     text-transform: uppercase;
     margin-bottom: 10px;
@@ -64,14 +65,22 @@ body {
     color: var(--p2-color);
     text-shadow: 0 0 10px var(--p2-color), 0 0 20px var(--p2-color);
 }
-.highlight { font-weight: bold; color: #fff; user-select: all; }
+.highlight { 
+    font-weight: bold; 
+    color: #fff; 
+    user-select: all; 
+    word-break: break-all; /* Prevents long IDs from breaking the layout */
+    display: block;
+    margin-top: 5px;
+    font-size: 0.9rem;
+}
 
 /* Buttons & Inputs */
 .card {
     background: rgba(255, 255, 255, 0.05);
-    padding: 25px;
+    padding: 20px;
     border-radius: 15px;
-    margin: 15px 0;
+    margin: 10px 0;
     width: 100%;
     max-width: 400px;
     border: 1px solid rgba(255,255,255,0.1);
@@ -94,7 +103,7 @@ input[type="text"] {
     padding: 15px 20px;
     border: none;
     border-radius: 5px;
-    font-size: 1.1rem;
+    font-size: clamp(0.9rem, 4vw, 1.1rem);
     font-weight: bold;
     cursor: pointer;
     margin: 10px 0;
@@ -117,4 +126,5 @@ input[type="text"] {
     border: 2px solid #333;
     box-shadow: 0 0 30px rgba(0, 255, 255, 0.2), 0 0 30px rgba(255, 0, 255, 0.2);
     border-radius: 10px;
+    touch-action: none;
 }
