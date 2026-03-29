@@ -1,0 +1,120 @@
+:root {
+    --bg-color: #050510;
+    --text-color: #ffffff;
+    --p1-color: #00ffff; /* Cyan */
+    --p2-color: #ff00ff; /* Pink */
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Courier New', Courier, monospace;
+    touch-action: none; /* Critical for canvas dragging */
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+
+#app {
+    width: 100%;
+    max-width: 800px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.screen {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.screen.active {
+    display: flex;
+}
+
+/* Typography & Neon Effects */
+.neon-text {
+    font-size: 3rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+.cyan {
+    color: var(--p1-color);
+    text-shadow: 0 0 10px var(--p1-color), 0 0 20px var(--p1-color);
+}
+.pink {
+    color: var(--p2-color);
+    text-shadow: 0 0 10px var(--p2-color), 0 0 20px var(--p2-color);
+}
+.highlight { font-weight: bold; color: #fff; user-select: all; }
+
+/* Buttons & Inputs */
+.card {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 25px;
+    border-radius: 15px;
+    margin: 15px 0;
+    width: 100%;
+    max-width: 400px;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+.card h3 { margin-bottom: 15px; letter-spacing: 2px; }
+
+input[type="text"] {
+    width: 100%;
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid #333;
+    background: #111;
+    color: #fff;
+    margin-bottom: 10px;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.btn {
+    padding: 15px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    margin: 10px 0;
+    transition: all 0.2s;
+    width: 100%;
+    text-transform: uppercase;
+}
+.btn:active { transform: scale(0.95); }
+.btn.primary { background: var(--p1-color); color: #000; box-shadow: 0 0 15px var(--p1-color); }
+.btn.secondary { background: #333; color: #fff; }
+
+#connection-status { margin-top: 15px; font-style: italic; color: #aaa; }
+
+/* Canvas Responsiveness */
+#game-canvas {
+    width: 100%;
+    max-width: 800px;
+    aspect-ratio: 4 / 3;
+    background: #000;
+    border: 2px solid #333;
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.2), 0 0 30px rgba(255, 0, 255, 0.2);
+    border-radius: 10px;
+}
