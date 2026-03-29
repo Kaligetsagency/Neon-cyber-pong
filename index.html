@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Neon Cyber-Pong</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/peerjs@1.5.1/dist/peerjs.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div id="lobby" class="screen active">
+            <h1 class="neon-text cyan">CYBER</h1>
+            <h1 class="neon-text pink">PONG</h1>
+            
+            <div class="card">
+                <h3>Single Player</h3>
+                <button id="btn-ai" class="btn primary">Play vs Hard AI</button>
+            </div>
+
+            <div class="card">
+                <h3>Multiplayer (P2P)</h3>
+                <p>Your ID: <span id="my-id" class="highlight">Loading...</span></p>
+                <button id="btn-copy-id" class="btn secondary">Copy My ID</button>
+                <hr>
+                <input type="text" id="join-id" placeholder="Enter Friend's ID">
+                <button id="btn-join" class="btn primary">Join Friend</button>
+            </div>
+            <p id="connection-status"></p>
+        </div>
+
+        <div id="game" class="screen">
+            <canvas id="game-canvas" width="800" height="600"></canvas>
+        </div>
+
+        <div id="game-over" class="screen">
+            <h1 id="winner-text" class="neon-text">You Win!</h1>
+            <p>Final Score: <br><span id="final-score-text" class="highlight" style="font-size: 2rem;"></span></p>
+            <button id="btn-replay" class="btn primary">Play Again</button>
+            <button id="btn-menu" class="btn secondary">Main Menu</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
