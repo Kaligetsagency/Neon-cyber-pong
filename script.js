@@ -1,7 +1,7 @@
 // --- Game Configuration & State ---
 const canvas = document.getElementById('game-canvas');
 const ctx = canvas.getContext('2d');
-const WIN_SCORE = 5;
+const WIN_SCORE = 15;
 
 let isHost = true;
 let isAI = false;
@@ -35,7 +35,17 @@ const ui = {
 
 // --- Initialization & PeerJS ---
 function initPeer() {
-    peer = new Peer();
+    // Uses Google STUN servers to bypass mobile network firewalls
+    peer = new Peer({
+        config: {
+            'iceServers': [
+                { urls: 'stun:stun.l.google.com:19302' },
+                { urls: 'stun:stun1.l.google.com:19302' },
+                { urls: 'stun:stun2.l.google.com:19302' }
+            ]
+        }
+    });
+
     peer.on('open', id => ui.myId.innerText = id);
 
     peer.on('connection', connection => {
